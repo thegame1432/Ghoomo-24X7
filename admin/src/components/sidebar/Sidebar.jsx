@@ -3,22 +3,22 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+
 import { Link,useNavigate} from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
-
-
 const Sidebar = () => {
+
   let userinfo=JSON.parse(localStorage.getItem('user'));
-  console.log(userinfo);
+  //console.log(userinfo);
   const navigate = useNavigate()
 const logout=()=>{
   localStorage.clear();
   navigate("/login");
-  console.log(userinfo);
+  //console.log(userinfo);
 }
-  
+
 
   const { dispatch } = useContext(DarkModeContext);
   return (
@@ -30,6 +30,7 @@ const logout=()=>{
       <hr />
       <div className="center">
         <ul>
+          
           
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
@@ -51,10 +52,7 @@ const logout=()=>{
           </li>
           </Link>
           
-          
-          
           <p className="title">USER</p>
-          
           <li>
             <ExitToAppIcon className="icon" />
             <span onClick={logout}>Logout</span>
