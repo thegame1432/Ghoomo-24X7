@@ -9,6 +9,7 @@ import axios from "axios";
 const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
+  console.log(path);
   const [list, setList] = useState([]);
   const { data, loading, error } = useFetch(`/${path}`);
 
@@ -18,6 +19,8 @@ const Datatable = ({columns}) => {
 
   const handleDelete = async (id) => {
     try{
+      console.log(id);
+      
       await axios.delete(`/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
     }
