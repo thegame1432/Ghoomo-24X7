@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 
+
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
@@ -68,7 +69,7 @@ const Header = ({ type }) => {
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              -----------------------------
+              Travel without any booking problem!!!
             </h1>
             
             {!user && <button className="headerBtn">Sign in / Register</button>}
