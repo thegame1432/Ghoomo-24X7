@@ -9,14 +9,24 @@ import axios from "axios";
 const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  console.log(path);
   const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`/${path}`);
-
+  const { data, loading, error } = useFetch(path !== "hotels" ? `/${path}` : null);
   useEffect(() => {
-    setList(data);
-  }, [data])
-
+    if (path === "hotels") {
+      const fetchHotels = async () => {
+        try {
+          const res = await axios.get(`/${path}/getallhotels`);
+          setList(res.data);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      fetchHotels();
+    } else {
+      setList(data);
+    }
+  }, [path, data]);
+  
   const handleDelete = path === 'rooms' ? async (id,hotelId) => {
     try {
       await axios.delete(`/${path}/${id}/${hotelId}`);
@@ -43,9 +53,7 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
+            
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id,params.row.HotelId)}

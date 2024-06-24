@@ -16,6 +16,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import Person2Icon from '@mui/icons-material/Person2';
 
 
 const Header = ({ type }) => {
@@ -78,7 +79,7 @@ const Header = ({ type }) => {
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input
                   type="text"
-                  placeholder="Where are you going?"
+                  placeholder="What is your destination"
                   className="headerSearchInput"
                   onChange={(e) => setDestination(e.target.value)}
                 />
