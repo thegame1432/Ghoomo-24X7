@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext";
 
 import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
+import Per from '@mui/icons-material/AccountBox';
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   return (
@@ -16,7 +17,16 @@ const Navbar = () => {
         <span className="logo ">  Ghoomo 24X7</span>
         </Link>
         
-        {user ? user.username : (
+        {user ? (
+  <div className="navItems">
+    <span className="username">
+    {user.username} </span>
+    <span>
+      
+    <Per className="profile"/>
+    </span>
+  </div>
+) : (
         <div className="navItems">
           <button className="navButton">Register</button>
           <button className="navButton">Login</button>

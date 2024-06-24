@@ -34,6 +34,8 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
+        
+      <p className="info">Login for Admin</p>
         <input
           type="text"
           placeholder="username"
