@@ -10,19 +10,38 @@ const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`/${path}`);
-
+  const { data, loading, error } = useFetch(path !== "hotels" ? `/${path}` : null);
   useEffect(() => {
-    setList(data);
-  }, [data])
-
-  const handleDelete = async (id) => {
-    try{
+    if (path === "hotels") {
+      const fetchHotels = async () => {
+        try {
+          const res = await axios.get(`/${path}/getallhotels`);
+          setList(res.data);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      fetchHotels();
+    } else {
+      setList(data);
+    }
+  }, [path, data]);
+  
+  const handleDelete = path === 'rooms' ? async (id,hotelId) => {
+    try {
+      await axios.delete(`/${path}/${id}/${hotelId}`);
+      setList(list.filter((item) => item._id !== id));
+      console.log(`Deleted room with id: ${id}`);
+    } catch (error) {
+      console.error('Error deleting room:', error);
+    }
+  } : async (id,hotelId) => {
+    try {
       await axios.delete(`/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
-    }
-    catch(err){
-
+      console.log(`Deleted item with id: ${id}`);
+    } catch (error) {
+      console.error('Error deleting item:', error);
     }
   };
 
@@ -34,12 +53,10 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
+            
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleDelete(params.row._id,params.row.HotelId)}
             >
               Delete
             </div>

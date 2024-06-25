@@ -66,6 +66,22 @@ export const getHotels = async (req, res, next) => {
     }
 };
 
+export const getAllHotels = async (req, res, next) => {
+    console.log("aaj")
+    try {
+        console.log("kal");
+        const minPrice =  1;
+        const maxPrice = 999;
+        const hotels = await Hotel.find({
+            cheapestPrice: { $gt: minPrice, $lt: maxPrice },
+        })
+        res.status(200).json(hotels);
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
+};
+
 export const getfeaturedHotels = async (req, res, next) => {
     try {
         const hotels = await Hotel.find({ featured: true }).limit(4);
@@ -118,3 +134,4 @@ export const getHotelRooms = async(req, res, next)=> {
         next(err);
     }
 }
+

@@ -1,8 +1,6 @@
 import "./hotel.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
-import MailList from "../../components/mailList/MailList";
-import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowLeft,
@@ -98,7 +96,7 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            {/* <button className="bookNow">Reserve or Book Now!</button> */}
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -108,8 +106,7 @@ const Hotel = () => {
               Excellent location – {data.distance}m from center
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
+              Book a stay over ₹{data.cheapestPrice} at this property.
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
@@ -131,19 +128,18 @@ const Hotel = () => {
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
                 <span>
-                  Located in the real heart of Krakow, this property has an
+                  Located in India, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                  <b>₹{days * data.cheapestPrice * options.room}</b> ({days}{" "}
                   nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
-          <MailList />
-          <Footer />
+          
         </div>
       )}
       {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}

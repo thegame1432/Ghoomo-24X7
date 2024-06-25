@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 
 const RoomSchema = new mongoose.Schema({
     title : {
@@ -17,6 +17,10 @@ const RoomSchema = new mongoose.Schema({
         type : String,
         required : true,
         unique : true
+    },
+    HotelId:{
+        type: mongoose.ObjectId,
+        required:true
     },
     roomNumbers: [{number: Number, unavailableDates:{type: [Date]}}],
 },{timestamps:true});

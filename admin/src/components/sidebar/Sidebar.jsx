@@ -3,7 +3,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-
+import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
 import { Link,useNavigate} from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -24,6 +24,9 @@ const logout=()=>{
   return (
     <div className="sidebar">
       <div className="top">
+        <span>
+          <ModeOfTravelIcon/>
+        </span>
           <span className="logo">Ghoomo-24X7</span>
         
       </div>
