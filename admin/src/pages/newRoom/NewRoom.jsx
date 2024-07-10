@@ -2,7 +2,7 @@ import "./newRoom.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { roomInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
@@ -12,11 +12,26 @@ const NewRoom = () => {
   const [info, setInfo] = useState({});
   const [hotelId, setHotelId] = useState(undefined);
   const [rooms, setRooms] = useState([]);
-  const { data, loading, error } = useFetch("/hotels");
+  const [hotels, setHotels] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        const res = await axios.get('/hotels/getallhotels');
+        setHotels(res.data);
+      } catch (err) {
+        setError(err)
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchHotels();
+  }, []);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -67,9 +82,12 @@ const NewRoom = () => {
                 >
                   {loading
                     ? "loading"
-                    : data &&
-                      data.map((hotel) => (
-                        <option key={hotel._id} value={hotel._id}>{hotel.name}</option>
+                    : error
+                    ? "Error fetching hotels"
+                    : hotels.map((hotel) => (
+                        <option key={hotel._id} value={hotel._id}>
+                          {hotel.name}
+                        </option>
                       ))}
                 </select>
               </div>

@@ -21,7 +21,7 @@ const SearchItem = ({item}) => {
         </span>
       </div>
       <div className="siDetails">
-        {item.rating && 
+        {item.rating &&
         <div className="siRating">
           <span>Excellent</span>
           <button>{item.rating}</button>

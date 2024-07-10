@@ -34,8 +34,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
-        
-      <p className="info">Login for Admin</p>
+      <p className="info">Login</p>
         <input
           type="text"
           placeholder="username"
@@ -51,7 +50,7 @@ const Login = () => {
           className="lInput"
         />
         <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
+          Submit
         </button>
         {error && <span>{error.message}</span>}
       </div>

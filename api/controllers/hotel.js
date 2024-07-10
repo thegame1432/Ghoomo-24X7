@@ -66,6 +66,24 @@ export const getHotels = async (req, res, next) => {
     }
 };
 
+export const getHotelsbydest= async (req, res, next) => {
+    const destination = req.query.destination
+    console.log("query",req.query)
+    console.log("dest",destination)
+    try {
+        const minPrice =  1;
+        const maxPrice = 999;
+        const hotels = await Hotel.find({
+            city: { $regex: destination, $options: "i" },
+            cheapestPrice: { $gt: minPrice, $lt: maxPrice },
+        })
+        res.status(200).json(hotels);
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
+};
+
 export const getAllHotels = async (req, res, next) => {
     console.log("aaj")
     try {

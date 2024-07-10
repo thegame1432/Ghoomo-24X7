@@ -8,7 +8,8 @@ import {
   getHotelRooms,
   getHotels,
   updateHotel,
-  getAllHotels
+  getAllHotels,
+  getHotelsbydest
 } from "../controllers/hotel.js";
 import Hotel from "../models/Hotel.js";
 import {verifyAdmin} from "../utils/verifyToken.js"
@@ -27,6 +28,7 @@ router.get("/find/:id", getHotel);
 //GET ALL
 
 router.get("/", getHotels);
+router.get("/gethotels", getHotelsbydest);
 router.get("/getallhotels", getAllHotels);
 router.get("/countByCity", countByCity);
 router.get("/countByType", countByType);
