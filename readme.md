@@ -16,8 +16,9 @@ Built using a robust stack of modern web technologies including React JS, Node J
 <br/>
 Key Features:-
 <br/>
-User Account Creation: Users must log in, ensuring a personalized and secure experience.
 <br/>
-Admin Management: Only administrators have the privilege to add and update hotel and room details, maintaining data integrity and quality.
+User Account Creation:- Users must log in, ensuring a personalized and secure experience.
 <br/>
-Room Capacity: Users can check the maximum accommodation of each room, ensuring it meets their requirements.
+Admin Management:- Only administrators have the privilege to add and update hotel and room details, maintaining data integrity and quality.
+<br/>
+Room Capacity:- Users can check the maximum accommodation of each room, ensuring it meets their requirements.
