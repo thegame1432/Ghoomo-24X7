@@ -10,9 +10,11 @@ Developed by - Supreet Singh, Idhant Singh, Harsh Pandiyar
 <br/>
 Introduction:-
 <br/>
+<br/>
 Ghoomo 24X7 is an innovative web application designed to streamline vacation planning by helping users find accommodations that fit their preferences. 
 <br/>
 Built using a robust stack of modern web technologies including React JS, Node JS, Express JS, and MongoDB, Ghoomo 24X7 offers a seamless and user-friendly experience.
+<br/>
 <br/>
 Key Features:-
 <br/>
